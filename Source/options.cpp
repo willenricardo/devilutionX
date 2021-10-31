@@ -35,10 +35,10 @@
 namespace devilution {
 
 #ifndef DEFAULT_WIDTH
-#define DEFAULT_WIDTH 640
+#define DEFAULT_WIDTH 800
 #endif
 #ifndef DEFAULT_HEIGHT
-#define DEFAULT_HEIGHT 480
+#define DEFAULT_HEIGHT 600
 #endif
 #ifndef DEFAULT_AUDIO_SAMPLE_RATE
 #define DEFAULT_AUDIO_SAMPLE_RATE 22050
@@ -227,8 +227,8 @@ void LoadOptions()
 	sgOptions.Audio.nSoundVolume = GetIniInt("Audio", "Sound Volume", VOLUME_MAX);
 	sgOptions.Audio.nMusicVolume = GetIniInt("Audio", "Music Volume", VOLUME_MAX);
 	sgOptions.Audio.bWalkingSound = GetIniBool("Audio", "Walking Sound", true);
-	sgOptions.Audio.bAutoEquipSound = GetIniBool("Audio", "Auto Equip Sound", AUTO_PICKUP_DEFAULT(false));
-	sgOptions.Audio.bItemPickupSound = GetIniBool("Audio", "Item Pickup Sound", AUTO_PICKUP_DEFAULT(false));
+	sgOptions.Audio.bAutoEquipSound = GetIniBool("Audio", "Auto Equip Sound", AUTO_PICKUP_DEFAULT(true));
+	sgOptions.Audio.bItemPickupSound = GetIniBool("Audio", "Item Pickup Sound", AUTO_PICKUP_DEFAULT(true));
 
 	sgOptions.Audio.nSampleRate = GetIniInt("Audio", "Sample Rate", DEFAULT_AUDIO_SAMPLE_RATE);
 	sgOptions.Audio.nChannels = GetIniInt("Audio", "Channels", DEFAULT_AUDIO_CHANNELS);
@@ -267,22 +267,22 @@ void LoadOptions()
 	sgOptions.Gameplay.bGrabInput = GetIniBool("Game", "Grab Input", false);
 	sgOptions.Gameplay.bTheoQuest = GetIniBool("Game", "Theo Quest", false);
 	sgOptions.Gameplay.bCowQuest = GetIniBool("Game", "Cow Quest", false);
-	sgOptions.Gameplay.bFriendlyFire = GetIniBool("Game", "Friendly Fire", true);
+	sgOptions.Gameplay.bFriendlyFire = GetIniBool("Game", "Friendly Fire", false);
 	sgOptions.Gameplay.bTestBard = GetIniBool("Game", "Test Bard", false);
 	sgOptions.Gameplay.bTestBarbarian = GetIniBool("Game", "Test Barbarian", false);
-	sgOptions.Gameplay.bExperienceBar = GetIniBool("Game", "Experience Bar", AUTO_PICKUP_DEFAULT(false));
-	sgOptions.Gameplay.bEnemyHealthBar = GetIniBool("Game", "Enemy Health Bar", false);
-	sgOptions.Gameplay.bAutoGoldPickup = GetIniBool("Game", "Auto Gold Pickup", AUTO_PICKUP_DEFAULT(false));
-	sgOptions.Gameplay.bAdriaRefillsMana = GetIniBool("Game", "Adria Refills Mana", false);
+	sgOptions.Gameplay.bExperienceBar = GetIniBool("Game", "Experience Bar", true);
+	sgOptions.Gameplay.bEnemyHealthBar = GetIniBool("Game", "Enemy Health Bar", true);
+	sgOptions.Gameplay.bAutoGoldPickup = GetIniBool("Game", "Auto Gold Pickup", AUTO_PICKUP_DEFAULT(true));
+	sgOptions.Gameplay.bAdriaRefillsMana = GetIniBool("Game", "Adria Refills Mana", true);
 	sgOptions.Gameplay.bAutoEquipWeapons = GetIniBool("Game", "Auto Equip Weapons", true);
-	sgOptions.Gameplay.bAutoEquipArmor = GetIniBool("Game", "Auto Equip Armor", AUTO_PICKUP_DEFAULT(false));
-	sgOptions.Gameplay.bAutoEquipHelms = GetIniBool("Game", "Auto Equip Helms", AUTO_PICKUP_DEFAULT(false));
-	sgOptions.Gameplay.bAutoEquipShields = GetIniBool("Game", "Auto Equip Shields", AUTO_PICKUP_DEFAULT(false));
-	sgOptions.Gameplay.bAutoEquipJewelry = GetIniBool("Game", "Auto Equip Jewelry", AUTO_PICKUP_DEFAULT(false));
+	sgOptions.Gameplay.bAutoEquipArmor = GetIniBool("Game", "Auto Equip Armor", AUTO_PICKUP_DEFAULT(true));
+	sgOptions.Gameplay.bAutoEquipHelms = GetIniBool("Game", "Auto Equip Helms", AUTO_PICKUP_DEFAULT(true));
+	sgOptions.Gameplay.bAutoEquipShields = GetIniBool("Game", "Auto Equip Shields", AUTO_PICKUP_DEFAULT(true));
+	sgOptions.Gameplay.bAutoEquipJewelry = GetIniBool("Game", "Auto Equip Jewelry", AUTO_PICKUP_DEFAULT(true));
 	sgOptions.Gameplay.bRandomizeQuests = GetIniBool("Game", "Randomize Quests", true);
-	sgOptions.Gameplay.bShowMonsterType = GetIniBool("Game", "Show Monster Type", false);
+	sgOptions.Gameplay.bShowMonsterType = GetIniBool("Game", "Show Monster Type", true);
 	sgOptions.Gameplay.bDisableCripplingShrines = GetIniBool("Game", "Disable Crippling Shrines", false);
-	sgOptions.Gameplay.bAutoRefillBelt = GetIniBool("Game", "Auto Refill Belt", AUTO_PICKUP_DEFAULT(false));
+	sgOptions.Gameplay.bAutoRefillBelt = GetIniBool("Game", "Auto Refill Belt", AUTO_PICKUP_DEFAULT(true));
 
 	GetIniValue("Network", "Bind Address", sgOptions.Network.szBindAddress, sizeof(sgOptions.Network.szBindAddress), "0.0.0.0");
 	sgOptions.Network.nPort = GetIniInt("Network", "Port", 6112);
@@ -294,7 +294,7 @@ void LoadOptions()
 	GetIniValue("Controller", "Mapping", sgOptions.Controller.szMapping, sizeof(sgOptions.Controller.szMapping), "");
 	sgOptions.Controller.bSwapShoulderButtonMode = GetIniBool("Controller", "Swap Shoulder Button Mode", false);
 	sgOptions.Controller.bDpadHotkeys = GetIniBool("Controller", "Dpad Hotkeys", false);
-	sgOptions.Controller.fDeadzone = GetIniFloat("Controller", "deadzone", 0.07F);
+	sgOptions.Controller.fDeadzone = GetIniFloat("Controller", "deadzone", 0.15F);
 #ifdef __vita__
 	sgOptions.Controller.bRearTouch = GetIniBool("Controller", "Enable Rear Touchpad", true);
 #endif
@@ -356,7 +356,7 @@ void LoadOptions()
 	if (!HasTranslation(locale)) {
 		locale = locale.substr(0, 2);
 		if (!HasTranslation(locale)) {
-			locale = "en";
+			locale = "pt_BR";
 		}
 	}
 	LogVerbose("Best match locale: {}", locale);

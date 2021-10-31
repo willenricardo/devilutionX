@@ -25,11 +25,11 @@ namespace {
 uint32_t TranslateControllerButtonToKey(ControllerButton controllerButton)
 {
 	switch (controllerButton) {
-	case ControllerButton_BUTTON_A: // Bottom button
-		return QuestLogIsOpen ? DVL_VK_SPACE : DVL_VK_ESCAPE;
 	case ControllerButton_BUTTON_B: // Right button
+		return QuestLogIsOpen ? DVL_VK_SPACE : DVL_VK_ESCAPE;
+	case ControllerButton_BUTTON_A: // Bottom button
 		return (sgpCurrentMenu != nullptr || stextflag != STORE_NONE || QuestLogIsOpen) ? DVL_VK_RETURN : DVL_VK_SPACE;
-	case ControllerButton_BUTTON_Y: // Top button
+	case ControllerButton_BUTTON_X: // Left button
 		return DVL_VK_RETURN;
 	case ControllerButton_BUTTON_LEFTSTICK:
 		return DVL_VK_TAB; // Map
@@ -305,7 +305,7 @@ bool GetGameAction(const SDL_Event &event, ControllerButtonEvent ctrlEvent, Game
 		}
 
 		// Bottom button: Closes menus or opens quick spell book if nothing is open.
-		if (ctrlEvent.button == ControllerButton_BUTTON_A) { // Bottom button
+		if (ctrlEvent.button == ControllerButton_BUTTON_B) { // Right button
 			if (ctrlEvent.up)
 				return true;
 			if (IsControllerButtonPressed(ControllerButton_BUTTON_BACK))
@@ -329,7 +329,7 @@ bool GetGameAction(const SDL_Event &event, ControllerButtonEvent ctrlEvent, Game
 			switch (ctrlEvent.button) {
 			case ControllerButton_IGNORE:
 				return true;
-			case ControllerButton_BUTTON_B: // Right button
+			case ControllerButton_BUTTON_A: // Bottom button
 				if (!ctrlEvent.up) {
 					if (IsControllerButtonPressed(ControllerButton_BUTTON_BACK))
 						*action = GameActionSendKey { DVL_VK_F8, ctrlEvent.up };
@@ -337,7 +337,7 @@ bool GetGameAction(const SDL_Event &event, ControllerButtonEvent ctrlEvent, Game
 						*action = GameAction(GameActionType_PRIMARY_ACTION);
 				}
 				return true;
-			case ControllerButton_BUTTON_Y: // Top button
+			case ControllerButton_BUTTON_X: // Left button
 				if (!ctrlEvent.up) {
 					if (IsControllerButtonPressed(ControllerButton_BUTTON_BACK))
 						*action = GameActionSendKey { DVL_VK_F6, ctrlEvent.up };
@@ -345,7 +345,7 @@ bool GetGameAction(const SDL_Event &event, ControllerButtonEvent ctrlEvent, Game
 						*action = GameAction(GameActionType_SECONDARY_ACTION);
 				}
 				return true;
-			case ControllerButton_BUTTON_X: // Left button
+			case ControllerButton_BUTTON_Y: // TOP button
 				if (!ctrlEvent.up) {
 					if (IsControllerButtonPressed(ControllerButton_BUTTON_BACK))
 						*action = GameActionSendKey { DVL_VK_F5, ctrlEvent.up };

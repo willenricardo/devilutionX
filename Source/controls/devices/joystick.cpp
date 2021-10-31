@@ -21,19 +21,19 @@ ControllerButton Joystick::ToControllerButton(const SDL_Event &event)
 		switch (event.jbutton.button) {
 #ifdef JOY_BUTTON_A
 		case JOY_BUTTON_A:
-			return ControllerButton_BUTTON_A;
+			return ControllerButton_BUTTON_B;
 #endif
 #ifdef JOY_BUTTON_B
 		case JOY_BUTTON_B:
-			return ControllerButton_BUTTON_B;
+			return ControllerButton_BUTTON_A;
 #endif
 #ifdef JOY_BUTTON_X
 		case JOY_BUTTON_X:
-			return ControllerButton_BUTTON_X;
+			return ControllerButton_BUTTON_Y;
 #endif
 #ifdef JOY_BUTTON_Y
 		case JOY_BUTTON_Y:
-			return ControllerButton_BUTTON_Y;
+			return ControllerButton_BUTTON_X;
 #endif
 #ifdef JOY_BUTTON_LEFTSTICK
 		case JOY_BUTTON_LEFTSTICK:
@@ -118,19 +118,19 @@ int Joystick::ToSdlJoyButton(ControllerButton button)
 		UNIMPLEMENTED();
 	switch (button) {
 #ifdef JOY_BUTTON_A
-	case ControllerButton_BUTTON_A:
+	case ControllerButton_BUTTON_B:
 		return JOY_BUTTON_A;
 #endif
 #ifdef JOY_BUTTON_B
-	case ControllerButton_BUTTON_B:
+	case ControllerButton_BUTTON_A:
 		return JOY_BUTTON_B;
 #endif
 #ifdef JOY_BUTTON_X
-	case ControllerButton_BUTTON_X:
+	case ControllerButton_BUTTON_Y:
 		return JOY_BUTTON_X;
 #endif
 #ifdef JOY_BUTTON_Y
-	case ControllerButton_BUTTON_Y:
+	case ControllerButton_BUTTON_X:
 		return JOY_BUTTON_Y;
 #endif
 #ifdef JOY_BUTTON_BACK

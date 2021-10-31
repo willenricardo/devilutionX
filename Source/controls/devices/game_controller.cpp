@@ -46,14 +46,14 @@ ControllerButton GameController::ToControllerButton(const SDL_Event &event)
 	case SDL_CONTROLLERBUTTONDOWN:
 	case SDL_CONTROLLERBUTTONUP:
 		switch (event.cbutton.button) {
-		case SDL_CONTROLLER_BUTTON_A:
-			return ControllerButton_BUTTON_A;
 		case SDL_CONTROLLER_BUTTON_B:
 			return ControllerButton_BUTTON_B;
-		case SDL_CONTROLLER_BUTTON_X:
-			return ControllerButton_BUTTON_X;
+		case SDL_CONTROLLER_BUTTON_A:
+			return ControllerButton_BUTTON_A;
 		case SDL_CONTROLLER_BUTTON_Y:
 			return ControllerButton_BUTTON_Y;
+		case SDL_CONTROLLER_BUTTON_X:
+			return ControllerButton_BUTTON_X;
 		case SDL_CONTROLLER_BUTTON_LEFTSTICK:
 			return ControllerButton_BUTTON_LEFTSTICK;
 		case SDL_CONTROLLER_BUTTON_RIGHTSTICK:
@@ -88,14 +88,14 @@ SDL_GameControllerButton GameController::ToSdlGameControllerButton(ControllerBut
 	if (button == ControllerButton_AXIS_TRIGGERLEFT || button == ControllerButton_AXIS_TRIGGERRIGHT)
 		UNIMPLEMENTED();
 	switch (button) {
-	case ControllerButton_BUTTON_A:
-		return SDL_CONTROLLER_BUTTON_A;
 	case ControllerButton_BUTTON_B:
 		return SDL_CONTROLLER_BUTTON_B;
-	case ControllerButton_BUTTON_X:
-		return SDL_CONTROLLER_BUTTON_X;
+	case ControllerButton_BUTTON_A:
+		return SDL_CONTROLLER_BUTTON_A;
 	case ControllerButton_BUTTON_Y:
 		return SDL_CONTROLLER_BUTTON_Y;
+	case ControllerButton_BUTTON_X:
+		return SDL_CONTROLLER_BUTTON_X;
 	case ControllerButton_BUTTON_BACK:
 		return SDL_CONTROLLER_BUTTON_BACK;
 	case ControllerButton_BUTTON_START:

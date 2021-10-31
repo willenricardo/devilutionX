@@ -12,10 +12,10 @@ enum ControllerButton : uint8_t {
 	ControllerButton_IGNORE,
 	ControllerButton_AXIS_TRIGGERLEFT,  // ZL (aka L2)
 	ControllerButton_AXIS_TRIGGERRIGHT, // ZR (aka R2)
-	ControllerButton_BUTTON_A,          // Bottom button
 	ControllerButton_BUTTON_B,          // Right button
-	ControllerButton_BUTTON_X,          // Left button
+	ControllerButton_BUTTON_A,          // Bottom button
 	ControllerButton_BUTTON_Y,          // TOP button
+	ControllerButton_BUTTON_X,          // Left button
 	ControllerButton_BUTTON_LEFTSTICK,
 	ControllerButton_BUTTON_RIGHTSTICK,
 	ControllerButton_BUTTON_LEFTSHOULDER,

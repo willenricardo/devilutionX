@@ -20,19 +20,19 @@ ControllerButton KbCtrlToControllerButton(const SDL_Event &event)
 #endif
 #ifdef KBCTRL_BUTTON_A
 		case KBCTRL_BUTTON_A:
-			return ControllerButton_BUTTON_A;
+			return ControllerButton_BUTTON_B;
 #endif
 #ifdef KBCTRL_BUTTON_B
 		case KBCTRL_BUTTON_B: // Right button
-			return ControllerButton_BUTTON_B;
+			return ControllerButton_BUTTON_A;
 #endif
 #ifdef KBCTRL_BUTTON_X
 		case KBCTRL_BUTTON_X: // Left button
-			return ControllerButton_BUTTON_X;
+			return ControllerButton_BUTTON_Y;
 #endif
 #ifdef KBCTRL_BUTTON_Y
 		case KBCTRL_BUTTON_Y:
-			return ControllerButton_BUTTON_Y;
+			return ControllerButton_BUTTON_X;
 #endif
 #ifdef KBCTRL_BUTTON_LEFTSTICK
 		case KBCTRL_BUTTON_LEFTSTICK:
